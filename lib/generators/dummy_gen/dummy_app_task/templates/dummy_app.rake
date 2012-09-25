@@ -7,9 +7,9 @@ namespace :<%= file_name %> do
   task :setup do
     DummyGen::Generators::DummyGenerator.start(
       [
+        "<%= engine_name %>",
         "--quiet",
         "--dummy_path=<%= dummy_path %>",
-        "<%= engine_name %>",
     ])
   end
 
