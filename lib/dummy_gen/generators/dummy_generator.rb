@@ -69,7 +69,7 @@ module DummyGen
       end
 
       def dummy_app_requires
-        [ "jquery_rails", "#{engine_name}", "#{engine_name}/engine" ]
+        [ "jquery-rails", "#{engine_name}", "#{engine_name}/engine" ]
       end
 
       def dummy_application_definition
