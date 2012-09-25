@@ -5,7 +5,17 @@ require "active_support/core_ext/hash/slice"
 module DummyGen
   module Generators
     class DummyGenerator < Rails::Generators::Base
-      argument :engine_name, :type => :string
+      argument :engine_name, type: :string
+
+      class_option :dummy_path,
+        type:    :string,
+        default: "spec/dummy",
+        desc:    "Where to generate the dummy application"
+
+      class_option :dummy_module,
+        type:    :string,
+        default: "Dummy",
+        desc:    "Dummy application module"
 
       def self.source_paths
         paths = self.superclass.source_paths
@@ -61,11 +71,11 @@ module DummyGen
       end
 
       def dummy_path
-        "spec/dummy"
+        options[:dummy_path]
       end
 
       def dummy_module_name
-        "Dummy"
+        options[:dummy_module]
       end
 
       def dummy_app_requires
