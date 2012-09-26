@@ -18,5 +18,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "rails", "~> 3.2"
+  gem.add_development_dependency 'rspec', '~> 2.11.0'
+  gem.add_development_dependency 'rspec-rails', '~> 2.11.0'
+  gem.add_development_dependency 'ammeter', '~> 0.2.8'
 end
 
