@@ -32,9 +32,7 @@ module DummyGen
         opts = (options || {}).slice(*PASSTHROUGH_OPTIONS)
         opts[:force] = true
         opts[:skip_bundle] = true
-
-        invoke Rails::Generators::AppGenerator,
-          [ File.expand_path(dummy_path, destination_root) ], opts
+        invoke_app_generator(opts)
       end
 
       def test_dummy_clean
@@ -94,6 +92,14 @@ module DummyGen
 
       def gemfile_path
         "../../../../Gemfile"
+      end
+      
+      private
+      def invoke_app_generator(opts)
+        cwd = FileUtils.pwd
+        invoke Rails::Generators::AppGenerator,
+          [ File.expand_path(dummy_path, destination_root) ], opts
+        FileUtils.cd(cwd)
       end
     end
   end
